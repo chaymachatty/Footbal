@@ -1,0 +1,38 @@
+<div class="d-flex team-vs" style="margin:20px;">
+    <button class="btn btn-danger" (click)="deleteMatch(matchInput.id)">delete</button>
+    <span class="score"><span [ngStyle]="{color:compareTo(matchInput.scoreOne,matchInput.scoreTwo)[1]}">{{matchInput.scoreOne}}</span>- <span>{{matchInput.scoreTwo}}</span></span>
+    <div class="team-1 w-50">
+      <div class="team-details w-100 text-center">
+        <img src="assets/images/logo_1.png" alt="Image" class="img-fluid">
+        <h3
+        [ngClass]="
+        {
+            win:compareTo(matchInput.scoreOne,matchInput.scoreTwo)[0]=='win',
+            loss:compareTo(matchInput.scoreOne,matchInput.scoreTwo)[0]=='loss',
+            draw:compareTo(matchInput.scoreOne,matchInput.scoreTwo)[0]=='draw'
+
+        }" >{{matchInput.teamOne}} <span>({{compareTo(matchInput.scoreOne,matchInput.scoreTwo)[0]}})</span></h3>
+        <ul class="list-unstyled">
+          <li>{{matchInput.teamOne}}</li>
+          <li>{{matchInput.scoreOne}}</li>
+         
+        </ul>
+      </div>
+    </div>
+    <div class="team-2 w-50">
+      <div class="team-details w-100 text-center">
+        <img src="assets/images/logo_2.png" alt="Image" class="img-fluid">
+        <h3
+        [ngClass]="
+        {
+            win:compareTo(matchInput.scoreTwo,matchInput.scoreOne)[0]=='win',
+            loss:compareTo(matchInput.scoreTwo,matchInput.scoreOne)[0]=='loss',
+            draw:compareTo(matchInput.scoreTwo,matchInput.scoreOnecd)[0]=='draw'
+
+        }">{{matchInput.teamTwo}}<span>({{compareTo(matchInput.scoreTwo,matchInput.scoreOne)[0]}})</span></h3>
+        <ul class="list-unstyled">
+          <li>{{matchInput.scoreTwo}}</li>
+        </ul>
+      </div>
+    </div>
+  </div>
